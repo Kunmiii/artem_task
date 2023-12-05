@@ -1,17 +1,20 @@
 package artem_task;
 
-public class ArrayList<T> implements StringList {
-    private final int initial_size = 10;
-    private T[] items;
+import java.util.Arrays;
+
+public class ArrayList implements StringList {
+    private Object[] items;
     private int cur_loc;
 
     public ArrayList(){
-        this.items = (T[]) new Object[initial_size];
+        int initialSize = 10;
+        this.items = new Object[initialSize];
         this.cur_loc = 0;
     }
     @Override
     public void add(String element) {
-        this.items[cur_loc++] = (T) element;
+        checkCapacity();
+        items[cur_loc++] = element;
     }
 
     public String toString(){
@@ -46,5 +49,12 @@ public class ArrayList<T> implements StringList {
             throw new IndexOutOfBoundsException();
         }
         return (String) items[index];
+    }
+
+    private void checkCapacity(){
+        if (cur_loc == items.length){
+            int newSize = items.length * 2;
+            items = Arrays.copyOf(items, newSize);
+        }
     }
 }
