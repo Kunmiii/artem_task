@@ -4,24 +4,25 @@ import java.util.Arrays;
 
 public class ArrayList implements StringList {
     private Object[] items;
-    private int cur_loc;
+    int initialSize = 10;
+    private int currentIndex;
 
     public ArrayList(){
-        int initialSize = 10;
+        //int initialSize = 10;
         this.items = new Object[initialSize];
-        this.cur_loc = 0;
+        this.currentIndex = 0;
     }
     @Override
     public void add(String element) {
-        checkCapacity();
-        items[cur_loc++] = element;
+        increaseCapacity();
+        items[currentIndex++] = element;
     }
 
     public String toString(){
         String modString = "[ ";
-        for (int i = 0; i < cur_loc; i++) {
+        for (int i = 0; i < currentIndex; i++) {
             modString += items[i];
-            if (i < cur_loc - 1){
+            if (i < currentIndex - 1){
                 modString += ", ";
             }
         }
@@ -30,7 +31,7 @@ public class ArrayList implements StringList {
     }
     @Override
     public int indexOf(String element) {
-        for (int i = 0; i < cur_loc; i++) {
+        for (int i = 0; i < currentIndex; i++) {
             if (element == items[i]){
                 return i;
             }
@@ -40,19 +41,32 @@ public class ArrayList implements StringList {
 
     @Override
     public int size() {
-        return cur_loc;
+        return currentIndex;
     }
 
     @Override
     public String get(int index) {
-        if (index < 0 || index >= cur_loc){
+        if (index < 0 || index >= currentIndex){
             throw new IndexOutOfBoundsException();
         }
         return (String) items[index];
     }
 
-    private void checkCapacity(){
-        if (cur_loc == items.length){
+    /*private void checkCapacity(){
+        if (currentIndex == items.length){
+            int newSize = items.length * 2;
+            items = Arrays.copyOf(items, newSize);
+        }
+    }*/
+
+    private boolean isIncreaseNeeded(){
+        return currentIndex == items.length;
+    }
+
+    private void increaseCapacity(){
+        boolean x = isIncreaseNeeded();
+
+        if (x) {
             int newSize = items.length * 2;
             items = Arrays.copyOf(items, newSize);
         }
