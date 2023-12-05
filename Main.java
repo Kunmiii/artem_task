@@ -2,12 +2,13 @@ package artem_task;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList names = new ArrayList();
 
         /* Adding elements to an array */
         names.add("Oke");
         names.add("Oluwatimileyin");
         names.add("Joel");
+
 
         System.out.println(names);
         System.out.println(names.indexOf("Joel"));
