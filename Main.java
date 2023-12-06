@@ -11,6 +11,8 @@ public class Main {
 
 
 
+
+
         System.out.println(names);
         System.out.println(names.indexOf("Joel"));
         System.out.println(names.size());
