@@ -4,17 +4,19 @@ import java.util.Arrays;
 
 public class ArrayList implements StringList {
     private Object[] items;
-    int initialSize = 10;
+    // int initialSize = 10;
     private int currentIndex;
 
     public ArrayList(){
-        //int initialSize = 10;
+        int initialSize = 10;
         this.items = new Object[initialSize];
         this.currentIndex = 0;
     }
     @Override
     public void add(String element) {
-        increaseCapacity();
+        if (isIncreaseNeeded()){
+            increaseCapacity();
+        }
         items[currentIndex++] = element;
     }
 
@@ -64,11 +66,7 @@ public class ArrayList implements StringList {
     }
 
     private void increaseCapacity(){
-        boolean x = isIncreaseNeeded();
-
-        if (x) {
             int newSize = items.length * 2;
             items = Arrays.copyOf(items, newSize);
-        }
     }
 }
