@@ -3,13 +3,14 @@ package artem_task;
 import java.util.Arrays;
 
 public class ArrayList implements StringList {
-    private Object[] items;
+    // private Object[] items;
+    private String[] items;
     // int initialSize = 10;
     private int currentIndex;
 
     public ArrayList(){
         int initialSize = 10;
-        this.items = new Object[initialSize];
+        this.items = new String[initialSize];
         this.currentIndex = 0;
     }
     @Override
@@ -21,20 +22,20 @@ public class ArrayList implements StringList {
     }
 
     public String toString(){
-        String modString = "[ ";
+        StringBuilder modString = new StringBuilder("[ ");
         for (int i = 0; i < currentIndex; i++) {
-            modString += items[i];
+            modString.append(items[i]);
             if (i < currentIndex - 1){
-                modString += ", ";
+                modString.append(", ");
             }
         }
-            modString += " ]";
-            return modString;
+            modString.append(" ]");
+            return modString.toString();
     }
     @Override
     public int indexOf(String element) {
         for (int i = 0; i < currentIndex; i++) {
-            if (element == items[i]){
+            if (element == items[currentIndex]){
                 return i;
             }
         }
@@ -51,7 +52,7 @@ public class ArrayList implements StringList {
         if (index < 0 || index >= currentIndex){
             throw new IndexOutOfBoundsException();
         }
-        return (String) items[index];
+        return items[index];
     }
 
     /*private void checkCapacity(){
