@@ -11,7 +11,7 @@ public class Main {
         System.out.println(dog1.jump(10));
         System.out.println();
         System.out.println(cat1.run(100));*/
-        System.out.println(cat1.swim(5));
+        System.out.println(cat1.swim());
         /*System.out.println(cat1.jump(0.2));
         System.out.println();
         System.out.println(dog2.run(10));
