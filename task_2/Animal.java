@@ -1,31 +1,39 @@
 package artem_task.task_2;
 
 public class Animal {
-    int runLimit;
-    int swimLimit;
-    double jumpLimit;
+    private int runLimit;
+    private int swimLimit;
+    private double jumpLimit;
     public Animal(int runLimit, int swimLimit, double jumpLimit){
         this.runLimit = runLimit;
         this.swimLimit = swimLimit;
         this.jumpLimit = jumpLimit;
     }
+
+    public Animal(int runLimit, double jumpLimit){
+        this.runLimit = runLimit;
+        this.jumpLimit = jumpLimit;
+    }
+
     public String run(int length){
-        return "result: Animal can run " + length + "m.";
+        return isAbleToRun(length) ? "result: run: true" : "result: run: false";
     }
 
     public String jump(double height){
-        return "result: Animal can jump " + height + "m.";
+        return isAbleToJump(height) ? "result: jump: true" : "result: jump: false";
     }
 
     public String swim(int length){
-        return "result: Animal can swim " + length + "m.";
+        return isAbleToSwim(length) ? "result: swim: true" : "result: swim: false";
     }
 
 
     public boolean isAbleToRun(int value){ return value < runLimit; }
+
     public boolean isAbleToSwim(int value){
         return value < swimLimit;
     }
+
     public boolean isAbleToJump(double value){
         return value < jumpLimit;
     }
