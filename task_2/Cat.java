@@ -6,20 +6,7 @@ public class Cat extends Animal{
         super(runLimit, jumpLimit);
     }
 
-    @Override
-    public String run(int length) {
-        return isAbleToRun(length) ? "result: run: true" : "result: run: false";
-    }
-    public String jump(double height){
-        return isAbleToJump(height) ? "result: jump: true" : "result: run: false";
-    }
-
     public String swim(){
         return "result: swim: false";
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
