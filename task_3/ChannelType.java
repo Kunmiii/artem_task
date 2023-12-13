@@ -7,7 +7,7 @@ public class ChannelType implements Channels {
     private ArrayList<String> channels = new ArrayList<>();
 
     ChannelType(String newChannelType){
-        this.newChannelType = newChannelType;
+        this.channels.add(newChannelType);
     }
     ChannelType(){
         this.channels.add("Mobile");
